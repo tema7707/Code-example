@@ -1,0 +1,87 @@
+﻿<Window x:Class="KDZ2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KDZ2"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        mc:Ignorable="d"
+        Title="Информационно-справочнаю система" Height="700" Width="1250" Icon="Images/logo_HSE.jpg">
+
+    <Grid HorizontalAlignment="Center">
+        <Label Content="Taxi Routes of Mexico City" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" FontSize="22" Width="343" Height="85" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+        <DataGrid x:Name="table"
+                  HorizontalAlignment="Center" MinColumnWidth="0"
+                  Margin="25,100,25,10"
+                  Padding="0" 
+                  CellStyle="{StaticResource Body_Content_DataGrid_Centering}"
+                  IsReadOnly="True"
+                  GridLinesVisibility="Horizontal"
+                  HorizontalGridLinesBrush="#FF9B9B9B" RowHeight="20" MouseDoubleClick="table_MouseDoubleClick" LoadingRow="DataGrid_LoadingRow"
+                  UnloadingRow="DataGrid_LoadingRow" Loaded="table_Loaded" Height="550" Background="{x:Null}" CanUserSortColumns="False"
+        >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFD1D1D1" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Dell" Width="30" CanUserReorder="False" CanUserResize="True" CanUserSort="True" MinWidth="40">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <StackPanel Background="{x:Null}">
+                                <Button x:Name="EditButton" BorderThickness="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Width="17" Height="Auto" Click="DellLine_Click" HorizontalContentAlignment="Left" MinWidth="0" ToolTip="Удалить строку">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Images/Dellete.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="MostPopular" Content="" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="35" Width="500" FontSize="14" FontWeight="Medium"/>
+        <Label x:Name="LeastPopular" Content="" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Height="28" Width="500" FontSize="14" FontWeight="Medium"/>
+        <Button x:Name="AddLine" Content="Add" HorizontalAlignment="Right" Margin="0,66,73,0" VerticalAlignment="Top" Width="60" Height="27" Click="AddLine_Click" ToolTip="Добавить новую строку"/>
+        <Image HorizontalAlignment="Right" Height="32" Margin="0,64,200,0" VerticalAlignment="Top" Width="32" Source="Images/Low.png" MouseDown="Density1_Click" ToolTip="Минимальный размер строк"/>
+        <Image HorizontalAlignment="Right" Height="30" Margin="0,65,170,0" VerticalAlignment="Top" Width="32" Source="Images/Medium.png" MouseDown="Density2_Click" ToolTip="Стандартный размер строк"/>
+        <Image HorizontalAlignment="Right" Height="31" Margin="0,65,140,0" VerticalAlignment="Top" Width="30" Source="Images/Hight.png" MouseDown="Density3_Click" ToolTip="Максимальный размер строк"/>
+        <Menu Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <MenuItem x:Name="File" Header="Файл" Click="File_Click" ToolTip="Открыть меню работы с файлом">
+                <MenuItem Header="Открыть" Click="Open_Click" ToolTip="Открыть таблицу"/>
+                <MenuItem Header="Создать новый" Click="NewFile_Click" ToolTip="Создать новую таблицу"/>
+                <MenuItem Header="Сохранить как" Click="SaveAs_Click" ToolTip="Сохранить таблицу"/>
+                <MenuItem Header="Добавить к" Click="AddToFile_Click" ToolTip="Добавить строки этой таблицы к другой"/>
+                <MenuItem x:Name="Save" Header="Сохранить" Click="Save_Click" Visibility="Collapsed" ToolTip="Сохранить мнформацию в файл, к которому обращались в последний раз"/>
+                <Separator />
+                <MenuItem x:Name="Exit" Header="Выход" Click="Exit_Click" ToolTip="Выйти из программы" />
+            </MenuItem>
+            <MenuItem x:Name="Edit_button" Header="Режим чтения" Click="Edit_button_Click" ToolTip="Изменить режим" />
+            <MenuItem Header="О программе" Click="About_Click" ToolTip="Посмотреть сведения о программе" />
+        </Menu>
+        <Button x:Name="Refresh_Button" Content="Refresh" HorizontalAlignment="Right" Margin="0,66,2,0" VerticalAlignment="Top" Width="60" Height="27" Click="Refresh_click" ToolTip="Обновить"/>
+        <ComboBox  x:Name="Filter" HorizontalAlignment="Right" Margin="0,36,5,0" VerticalAlignment="Top" Width="130" ToolTip="Фильтр компаний"/>
+        <Label Content="Компания: " HorizontalAlignment="Right" Margin="0,36,135,0" VerticalAlignment="Top" FontWeight="Medium"/>
+        <ComboBox  x:Name="SortName" HorizontalAlignment="Right" Margin="0,7,5,0" VerticalAlignment="Top" Width="130" ToolTip="Тип сортировки">
+            <TextBlock>Id</TextBlock>
+            <TextBlock>Vendor id</TextBlock>
+            <TextBlock>Pickup time</TextBlock>
+            <TextBlock>Dropoff time</TextBlock>
+            <TextBlock>Pickup longitude</TextBlock>
+            <TextBlock>Pickup latitude</TextBlock>
+            <TextBlock>Dropoff longitude</TextBlock>
+            <TextBlock>Dropoff latitude</TextBlock>
+            <TextBlock>Store flag</TextBlock>
+            <TextBlock>Trip duration</TextBlock>
+            <TextBlock>Distance</TextBlock>
+            <TextBlock>Wait</TextBlock>
+            <TextBlock>Не сортировать</TextBlock>
+        </ComboBox>
+        <Label Content="Сортировать по: " HorizontalAlignment="Right" Margin="0,7,135,0" VerticalAlignment="Top" FontWeight="Medium"/>
+    </Grid>
+</Window>

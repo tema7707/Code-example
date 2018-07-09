@@ -1,0 +1,12 @@
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\tema\source\repos\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\tema\Desktop\KDZ2_Shirokov\KDZ2\ClassLibrary\obj\Debug\ClassLibrary.pdb
